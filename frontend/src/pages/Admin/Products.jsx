@@ -15,7 +15,7 @@ export default function Products() {
     }, [])
 
     const fetchProducts = () => {
-        axios.get('http://localhost:3000/api/product/products')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/product/products`)
             .then((success) => {
                 setProducts(success.data)
             })
@@ -43,7 +43,7 @@ export default function Products() {
 
         if (editId) {
             // update
-            axios.put(`http://localhost:3000/api/product/update/${editId}`, formData)
+            axios.put(`${process.env.REACT_APP_API_URL}/api/product/update/${editId}`, formData)
                 .then(res => {
                     setProducts(products.map(p => p._id === editId ? res.data : p))
                     setEditId(null)
@@ -53,7 +53,7 @@ export default function Products() {
                 .catch(err => console.log(err))
         } else {
             // add
-            axios.post('http://localhost:3000/api/product/add', formData)
+            axios.post(`${process.env.REACT_APP_API_URL}/api/product/add`, formData)
                 .then(res => {
                     setProducts([...products, res.data])
                     setForm({ name: '', price: '', description: '', stock: '', category: '' })
@@ -76,7 +76,7 @@ export default function Products() {
     }
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/api/product/delete/${id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/api/product/delete/${id}`)
             .then(() => {
                 setProducts(products.filter(p => p._id !== id))
             })

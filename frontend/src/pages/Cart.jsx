@@ -38,7 +38,7 @@ export function Cart() {
             }
 
             // create order
-            const res = await fetch("http://localhost:3000/api/razorpay", { method: "POST" })
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/razorpay`, { method: "POST" })
             if (!res.ok) {
                 setError("Failed to create payment order. Try again.");
                 setLoading(false);
@@ -67,7 +67,7 @@ export function Cart() {
                             paymentId: response.razorpay_payment_id
                         })
 
-                        await axios.post('http://localhost:3000/api/order/add', data);
+                        await axios.post(`${process.env.REACT_APP_API_URL}/api/order/add`, data);
                         clearCart();
                         navigate('/my-orders')
                     } catch (error) {

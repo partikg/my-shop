@@ -7,7 +7,7 @@ export default function My_orders() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/order/orders')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/order/orders`)
             .then((success) => {
                 const myOrders = success.data.filter(
                     order => order.user === localStorage.getItem('userId')

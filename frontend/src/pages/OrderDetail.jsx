@@ -7,7 +7,7 @@ export default function OrderDetail() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/order/orders/${params.id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/order/orders/${params.id}`)
             .then((success) => {
                 setData(success.data.order)
             })

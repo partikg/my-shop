@@ -7,7 +7,7 @@ export default function Home() {
     const [data, setData] = useState();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/product/products').then(
+        axios.get(`${process.env.REACT_APP_API_URL}/api/product/products`).then(
             response => {
                 setData(response.data);
             }

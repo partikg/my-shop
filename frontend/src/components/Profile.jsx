@@ -8,7 +8,7 @@ export default function Profile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/user/users/${userId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/user/users/${userId}`)
             .then((e) => {
                 setData(e.data);
             })

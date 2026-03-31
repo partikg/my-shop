@@ -9,7 +9,7 @@ export default function ProductList() {
     const { cartItems, addToCart } = useContext(CartContext)
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/product/products').then(
+        axios.get(`${process.env.REACT_APP_API_URL}/api/product/products`).then(
             response => {
                 setData(response.data);
             }

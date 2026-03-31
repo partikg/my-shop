@@ -20,7 +20,7 @@ export default function Register() {
             address,
             role
         })
-        axios.post('http://localhost:3000/api/user/register', data)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/user/register`, data)
             .then((success) => {
                 const token = success.data.token;
                 const decoded = jwtDecode(token);

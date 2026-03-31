@@ -8,7 +8,7 @@ export default function Product() {
     const { cartItems, addToCart } = useContext(CartContext)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/product/products/${slug}`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/product/products/${slug}`)
             .then(res => res.json())
             .then(data => setPost(data));
     }, [slug]);

@@ -16,7 +16,7 @@ export default function Login({ onSuccess, onRegisterClick }) {
             email,
             password
         })
-        axios.post('http://localhost:3000/api/user/login', data)
+        axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, data)
             .then((success) => {
                 if (!success.data.status) {
                     alert(success.data.message)

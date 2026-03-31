@@ -8,7 +8,7 @@ export default function Dashboard() {
 
     useEffect(() => {
 
-        axios.get('http://localhost:3000/api/admin/summary',
+        axios.get(`${process.env.REACT_APP_API_URL}/api/admin/summary`,
             { headers: { Authorization: `Bearer ${token}` } })
             .then((success) => {
                 setSummary(success.data)
@@ -17,7 +17,7 @@ export default function Dashboard() {
                 console.log(err)
             })
 
-        axios.get('http://localhost:3000/api/admin/orders',
+        axios.get(`${process.env.REACT_APP_API_URL}/api/admin/orders`,
             { headers: { Authorization: `Bearer ${token}` } })
             .then((success) => {
                 setOrders(success.data)
@@ -28,7 +28,7 @@ export default function Dashboard() {
     }, [])
 
     const updateStatus = (id, status) => {
-        axios.put(`http://localhost:3000/api/admin/orders/${id}`, { orderStatus: status }, { headers: { Authorization: `Bearer ${token}` } })
+        axios.put(`${process.env.REACT_APP_API_URL}/api/admin/orders/${id}`, { orderStatus: status }, { headers: { Authorization: `Bearer ${token}` } })
             .then((success) => {
                 setOrders(orders.map(o =>
                     o._id === id ? { ...o, orderStatus: status } : o
