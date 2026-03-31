@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors')
 const mongoose = require('mongoose');
@@ -21,8 +22,7 @@ app.use("/api/razorpay", razorpayRoute);
 app.use('/api/admin', require('./src/routes/adminRoutes'));
 
 if (process.env.NODE_ENV !== 'test') {
-    require('dotenv').config();
-    mongoose.connect(process.env.DB_URI)
+    mongoose.connect(process.env.MONGO_URI)
         .then(() => console.log('MongoDB connected'))
         .catch(err => console.error('MongoDB connection error:', err));
 
