@@ -6,6 +6,6 @@ A full-stack eCommerce web application built using the MERN stack with real paym
 
 Live Demo
 
-- Frontend: https://your-frontend-url.vercel.app
-- Backend API: https://your-backend-url.onrender.com
+- Frontend(vercel): https://my-shop-frontend-cwxm00i8e-partikgs-projects.vercel.app/
+- Backend(render): https://my-shop-backend-2c2k.onrender.com/
 
