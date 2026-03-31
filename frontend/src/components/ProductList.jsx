@@ -5,13 +5,13 @@ import { CartContext } from '../Context/Cart';
 
 export default function ProductList() {
 
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
     const { cartItems, addToCart } = useContext(CartContext)
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/api/product/products`).then(
             response => {
-                setData(response.data);
+                setData(response.data.products || response.data);
             }
         ).catch(error => {
             console.error(error);
