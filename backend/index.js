@@ -14,6 +14,10 @@ app.use('/webhook', webhookRoute);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+    res.send('server is running');
+});
+
 app.use('/api/user', require('./src/routes/userRoutes'));
 app.use('/api/product', require('./src/routes/productRoutes'));
 app.use('/api/order', require('./src/routes/orderRoutes'));
@@ -27,7 +31,7 @@ if (process.env.NODE_ENV !== 'test') {
         .catch(err => console.error('MongoDB connection error:', err));
 
     app.listen(PORT, () => {
-        console.log(`Example app listening at http://localhost:${PORT}`);
+        console.log(`app listening at http://localhost:${PORT}`);
     });
 }
 
